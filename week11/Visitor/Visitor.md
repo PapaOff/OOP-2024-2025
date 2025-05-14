@@ -2,7 +2,7 @@
 където сте описали общите функции на клиентите и имате съответна имплементация за всеки клиент
 
 **Например**
-```
+```c++
 #pragma once
 #include <iostream>
 #include <string>
@@ -36,7 +36,7 @@ public:
 функция `sendMail()` в `Client` и правя конкретна имплементация за всеки от клиентите
 
 **Например**
-```
+```c++
 #pragma once
 #include <iostream>
 #include <string>
@@ -88,7 +88,7 @@ public:
 
 Единия начин е с dynamic_cast да разберем кой е типа и тогава да извикаме правилния метод
 **Например**
-```
+```c++
 if (Bank* bank = dynamic_cast<Bank*>(client)) {
         std::cout << "Sending mail to bank: " << bank->getName() << "\n";
     } else if (Company* company = dynamic_cast<Company*>(client)) {
@@ -108,7 +108,7 @@ if (Bank* bank = dynamic_cast<Bank*>(client)) {
 **Пример с Visitor Design Pattern**
 
 `Visitor.h`
-```
+```c++
 class Bank;
 class Company;
 class Restaurant;
@@ -123,7 +123,7 @@ public:
 ```
 
 `Clients`
-```
+```c++
 class Client {
 public:
     virtual std::string getName() const = 0;
@@ -157,7 +157,7 @@ public:
 ```
 
 `InsuranceMessagingVisitor`
-```
+```c++
 class InsuranceMessagingVisitor : public Visitor {
 public:
     void visitBank(Bank* bank) override {
@@ -175,7 +175,7 @@ public:
 ```
 
 `main.cpp`
-```
+```c++
 int main() {
     std::vector<Client*> clients = {
         new Bank(), new Company(), new Restaurant()
